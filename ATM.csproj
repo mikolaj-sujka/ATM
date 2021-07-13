@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Login\" />
+    <Folder Include="View\" />
+    <Folder Include="Test\" />
+    <Folder Include="Registration\" />
+    <Folder Include="Users\" />
+  </ItemGroup>
+
+</Project>
