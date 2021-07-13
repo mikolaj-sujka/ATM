@@ -8,5 +8,6 @@ namespace ATM.Data
 {
     class DataUser
     {
+        // zapis/czytanie z bazy dancyh
     }
 }

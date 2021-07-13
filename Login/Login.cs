@@ -8,5 +8,6 @@ namespace ATM.Login
 {
     class Login
     {
+        // metoda loguj --> sprawdzanie w bazie danych, sprawdzanie poprawnosci itd
     }
 }

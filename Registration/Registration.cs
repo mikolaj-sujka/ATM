@@ -8,5 +8,6 @@ namespace ATM.Registration
 {
     class Registration
     {
+        // rejestracja --> pobieranie danych, sprawdzanie poprawnosci + czy np mail sie nie powtarza
     }
 }

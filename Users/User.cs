@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ATM.Users
 {
-    class User
+    public abstract class User
     {
+        // pola Name, LastName, Mail, Pin
+
+        // ctor
+
+        // metody -> withdrawal, balance, deposit
     }
 }
