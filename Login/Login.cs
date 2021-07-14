@@ -20,7 +20,7 @@ namespace ATM.Login
             {
                 Console.Write("Enter your password: ");
                 String password = Console.ReadLine();
-                if (IsPasswordValid(password))
+                if (IsPasswordValid(password, login))
                 {
                     CustomerView.CustomerActionChoice(login, password);
                 }
@@ -40,7 +40,7 @@ namespace ATM.Login
             return true;
         }
 
-        private static bool IsPasswordValid(string password) // sprawdz w bazie
+        private static bool IsPasswordValid(string password, string login) // sprawdz w bazie
         {
             return true;
         }

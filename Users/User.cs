@@ -14,5 +14,7 @@ namespace ATM.Users
         public String Login { get; set; }
         public int Pin { get; set; }
 
+        public String Password { get; set; }
+
     }
 }
