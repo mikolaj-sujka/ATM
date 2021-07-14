@@ -8,13 +8,24 @@ namespace ATM.Users
 {
     class Customer
     {
-        private User _user { get; set; }
+        private User _user { get; }
 
         public Customer(User user)
         {
             _user = user;
         }
 
-        // override funkcje (jesli bedzie trzeba) + dodaj funkcjonalnosc dodatkowa
+        public bool Withdrawal(int amount)
+        {
+            return true;
+        }
+        public void DisplayBalance()
+        {
+
+        }
+        public bool Deposit(int amount)
+        {
+            return true;
+        }
     }
 }

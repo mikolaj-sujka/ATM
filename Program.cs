@@ -1,4 +1,5 @@
 ﻿using System;
+using ATM.View;
 
 namespace ATM
 {
@@ -6,7 +7,7 @@ namespace ATM
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            AtmView.ActionChoice();
         }
     }
 }
