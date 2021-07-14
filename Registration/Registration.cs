@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using ATM.Data;
 using ATM.Users;
 
 namespace ATM.Registration
@@ -41,26 +36,26 @@ namespace ATM.Registration
                             if (Validation.IsPasswordLoginValid(login))
                             {
                                 Console.Write("Enter your password: ");
-                                String password = Console.ReadLine();
+                                var password = Console.ReadLine();
 
                                 if (Validation.IsPasswordLoginValid(password))
                                 {
                                     Console.Write("Enter your PIN: ");
-                                    int pin = Console.Read();
+                                    var pin = Console.ReadLine();
 
                                     if (Validation.IsPinValid(pin))
                                     {
                                         correctEntered = true;
-                                        // zarejestruj go w bazie
-                                        Customer customer = new Customer(new User
+                                        var customer = new Customer(new User
                                         {
                                             LastName = lastName,
                                             Login = login,
                                             Mail = mail,
                                             Name = name,
-                                            Pin = pin,
+                                            Pin = Int16.Parse(pin),
                                             Password = password
                                         });
+                                        DataUser.SaveUserData(customer.User);
                                         Console.WriteLine("New account registered!");
                                     }
                                     else

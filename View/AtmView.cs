@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ATM.Login;
 using static ATM.Login.Login;
 using static ATM.Registration.Registration;
 

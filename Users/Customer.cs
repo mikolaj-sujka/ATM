@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ATM.Users
 {
-    class Customer
+    class Customer : User
     {
         private User _user { get; }
 
+        public User User
+        {
+            get => _user;
+        }
         public Customer(User user)
         {
             _user = user;

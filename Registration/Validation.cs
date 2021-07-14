@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ATM.Registration
 {
@@ -15,9 +12,9 @@ namespace ATM.Registration
             return Regex.IsMatch(str, @"^[a-zA-Z]+$"); // contains only letters
         }
 
-        public static bool IsPinValid(int pin)
+        public static bool IsPinValid(String pin)
         {
-            return (pin is >= 0000 and <= 9999 && (pin.ToString().Length == 4));
+            return (pin.Length == 4) && (pin.All(char.IsDigit));
         }
 
         public static bool IsMailValid(String mail)
@@ -27,7 +24,7 @@ namespace ATM.Registration
 
         public static bool IsPasswordLoginValid(String str)
         {
-            return (str.Length is >= 4 and <= 20) && (String.IsNullOrWhiteSpace(str));
+            return (str.Length is >= 4 and <= 20) && (!(str.Contains(" ")));
         }
 
         public static void ErrorInfo()

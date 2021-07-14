@@ -1,13 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using ATM.Users;
+using Newtonsoft.Json;
 
 namespace ATM.Data
 {
     class DataUser
     {
-        // zapis/czytanie z bazy dancyh
+        public static void SaveUserData(User user)
+        {
+            var userSerialized = JsonConvert.SerializeObject(user);
+            File.WriteAllText("D:\\C#_ATM\\ATM\\Data\\userData.json", userSerialized);
+        }
+
+        public static User ReadUserData()
+        {
+            var userSerialized = File.ReadAllText("D:\\C#_ATM\\ATM\\Data\\userData.json");
+            return JsonConvert.DeserializeObject<User>(userSerialized);
+        }
     }
 }

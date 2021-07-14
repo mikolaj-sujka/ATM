@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ATM.Data;
 using ATM.View;
 
 namespace ATM.Login
@@ -23,6 +24,7 @@ namespace ATM.Login
                 if (IsPasswordValid(password, login))
                 {
                     CustomerView.CustomerActionChoice(login, password);
+                    Console.WriteLine("You have logged in successfully!");
                 }
                 else
                 {
@@ -37,12 +39,14 @@ namespace ATM.Login
 
         private static bool IsLoginExist(string login) // sprawdz w bazie
         {
-            return true;
+            var user = DataUser.ReadUserData();
+            return login.Equals(user.Login);
         }
 
         private static bool IsPasswordValid(string password, string login) // sprawdz w bazie
         {
-            return true;
+            var user = DataUser.ReadUserData();
+            return (login.Equals(user.Login) && password.Equals(user.Password));
         }
     }
 }
