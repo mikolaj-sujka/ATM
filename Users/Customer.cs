@@ -56,7 +56,7 @@ namespace ATM.Users
         public void DisplayBalance()
         {
             if(EnterPin())
-                Console.WriteLine("Balance: " + _balance + "$.");
+                Console.WriteLine("Balance: $" + _balance + ".");
             else
             {
                 Console.WriteLine("Entered wrong PIN!");
@@ -103,7 +103,7 @@ namespace ATM.Users
         {
             Console.WriteLine("\nRECEIPT");
             Console.WriteLine("----------------------------------------------------");
-            Console.WriteLine("Balance after operation " + nameOfOperation.ToUpper() + ": " + balanceAfter + "$.");
+            Console.WriteLine("Balance after operation " + nameOfOperation.ToUpper() + ": $" + balanceAfter + ".");
             Console.WriteLine("Time of operation: " + DateTime.Now);
             Console.WriteLine("Number of account: " + _accountNumber);
             Console.WriteLine("----------------------------------------------------\n");

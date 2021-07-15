@@ -1,11 +1,1 @@
-[
-  
-  {
-    "Name": "John",
-    "LastName": "Bond",
-    "Mail": "bond@interia.pl",
-    "Login": "bondJ",
-    "Pin": 1234,
-    "Password": "YmFyY2ExMjM="
-  }
-]
+[{"Name":"John","LastName":"Bond","Mail":"bond@interia.pl","Login":"bondJ","Pin":1234,"Password":"YmFyY2ExMjM="},{"Name":"Adam","LastName":"Kowalski","Mail":"kowalski@wp.pl","Login":"kowalskiPl","Pin":1111,"Password":"aGFzbG8xMjM="}]
