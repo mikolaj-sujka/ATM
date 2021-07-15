@@ -5,7 +5,7 @@ Automated Teller Machine - first project in C#, also using JSON to store data.
 Project is divided into different folders in which classes are responsible for different functionalities.
 
 1. **View**
-* We have 2 classes which build for us interface for every possible user in our app. It enables user to register/login or exit app. Also separated interface for signed in customers.
+* We have 2 classes which build for us interface for every possible user in our app. It enables user to register/login or exit app. Also separated interface for signed in customers. In CustomerView we're able to do some operations like deposit money/withdrawal/check balance (data about amount its not stored in json, so every time we start our app, the data of the balance is refreshed). 
 2. **Data**
 * I've chosen storing data in JSON in order to learn about writing/reading data in this file format and also improve my knowledge about this task. Folder contains class which is responsible for every aspect connected with updating/storing/reading data and also json file.
 3. **Login**
@@ -19,6 +19,8 @@ Project is divided into different folders in which classes are responsible for d
 1. Connect C# to database such as MySQL, SQL Server etc.
 2. Cleaning code -> make it more readable and also shorter.
 3. Adding other "users" to our app like "Administrator" etc.
+4. Register method which should be changed.
+5. Unit tests in C#.
 
 # Summary
 Project still has a lot to add and improve in future. My goal was to walk through C# language, strenghten programming in this language and also to learn other useful skills in this aspect. 
