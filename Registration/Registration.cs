@@ -75,8 +75,8 @@ namespace ATM.Registration
                         }
                         
                     }
-                    Validation.ErrorInfo();
                 }
+                Validation.ErrorInfo();
             }
         }
         private static void EntryInfo()
