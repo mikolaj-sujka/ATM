@@ -36,7 +36,7 @@ namespace ATM.Registration
 
         public static void ErrorInfo()
         {
-            Console.WriteLine("Invalid parameter entered! Enter again!");
+            Console.WriteLine("Invalid parameter entered! Register again!");
         }
 
         public static bool IsValidTypeAndRange(char c, int numOfOperations)

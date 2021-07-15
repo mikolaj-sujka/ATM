@@ -15,26 +15,32 @@ namespace ATM.Login
         {
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("You chose to sign in!\n");
-            Console.Write("Enter your login: ");
-            var login = Console.ReadLine();
-            
-            if (Validation.IsLoginExist(login))
+            int chancesToLogIn = 3;
+
+            while (chancesToLogIn >= 0)
             {
-                Console.Write("Enter your password: ");
-                string password = Console.ReadLine();
-                if (Validation.IsPasswordValid(password, login))
+                Console.Write("Enter your login: ");
+                var login = Console.ReadLine();
+                if (Validation.IsLoginExist(login))
                 {
-                    CustomerView.CustomerActionChoice(login);
-                    Console.WriteLine("You have logged in successfully!");
+                    Console.Write("Enter your password: ");
+                    string password = Console.ReadLine();
+                    if (Validation.IsPasswordValid(password, login))
+                    {
+                        CustomerView.CustomerActionChoice(login);
+                        Console.WriteLine("You have logged in successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("This password is incorrect! Try again! You have " + chancesToLogIn + " left.");
+                        chancesToLogIn--;
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("This password is incorrect! Try again later!");
+                    Console.WriteLine("This login is incorrect! Try again! You have " + chancesToLogIn + " left.");
+                    chancesToLogIn--;
                 }
-            }
-            else
-            {
-                Console.WriteLine("This login is incorrect! Try again later!");
             }
         }
     }
