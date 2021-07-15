@@ -2,9 +2,6 @@
 using ATM.Data;
 using ATM.Users;
 
-// skroc rejestracje
-// dodaj zachowanie ze jak ten sam login + mail to od nowa
-
 namespace ATM.Registration
 {
     class Registration
@@ -43,60 +40,45 @@ namespace ATM.Registration
 
                                 if (Validation.IsPasswordLoginValid(password))
                                 {
-                                    Console.Write("Enter your PIN: ");
-                                    var pin = Console.ReadLine();
-
-                                    if (Validation.IsPinValid(pin))
+                                    Console.Write("Enter your password again: ");
+                                    var repeatPassword = Console.ReadLine();
+                                    if (password != null && Validation.IsPasswordLoginValid(repeatPassword) && password.Equals(repeatPassword))
                                     {
-                                        correctEntered = true;
-                                        var customer = new Customer(new User
+                                        Console.Write("Enter your PIN: ");
+                                        var pin = Console.ReadLine();
+
+                                        if (Validation.IsPinValid(pin))
                                         {
-                                            LastName = lastName,
-                                            Login = login,
-                                            Mail = mail,
-                                            Name = name,
-                                            Pin = Int16.Parse(pin),
-                                            Password = DataUser.EncodePassowrd(password)
-                                        });
-                                        Console.WriteLine(DataUser.SaveUserData(customer.User)
-                                            ? "New account registered!"
-                                            : "Login/mail is already used!");
+                                            correctEntered = true;
+                                            var customer = new Customer(new User
+                                            {
+                                                LastName = lastName,
+                                                Login = login,
+                                                Mail = mail,
+                                                Name = name,
+                                                Pin = Int16.Parse(pin),
+                                                Password = DataUser.EncodePassowrd(password)
+                                            });
+                                            Console.WriteLine(DataUser.SaveUserData(customer.User)
+                                                ? "New account registered!"
+                                                : "Login/mail is already used!");
+                                        }
                                     }
                                     else
                                     {
-                                        Validation.ErrorInfo();
-                                        continue;
+                                        Console.WriteLine("Passwords do not match!");
                                     }
+
                                 }
-                                else
-                                {
-                                    Validation.ErrorInfo();
-                                    continue;
-                                }
+                               
                             }
-                            else
-                            {
-                                Validation.ErrorInfo();
-                                continue;
-                            }
+                            
                         }
-                        else
-                        {
-                            Validation.ErrorInfo();
-                            continue;
-                        }
+                        
                     }
-                    else
-                    {
-                        Validation.ErrorInfo();
-                        continue;
-                    }
+                   
                 }
-                else
-                {
-                    Validation.ErrorInfo();
-                    continue;
-                }
+                Validation.ErrorInfo();
             }
         }
         private static void EntryInfo()
