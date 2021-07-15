@@ -12,9 +12,8 @@ namespace ATM.Registration
             Console.WriteLine("You chose to register!\n");
             EntryInfo();
             Console.WriteLine("----------------------------------------------------");
-            var correctEntered = false;
 
-            while (!correctEntered)
+            while (true)
             {
                 Console.Write("Enter your name: ");
                 var name = Console.ReadLine();
@@ -49,7 +48,6 @@ namespace ATM.Registration
 
                                         if (Validation.IsPinValid(pin))
                                         {
-                                            correctEntered = true;
                                             var customer = new Customer(new User
                                             {
                                                 LastName = lastName,
@@ -62,6 +60,7 @@ namespace ATM.Registration
                                             Console.WriteLine(DataUser.SaveUserData(customer.User)
                                                 ? "New account registered!"
                                                 : "Login/mail is already used!");
+                                            break;
                                         }
                                     }
                                     else
@@ -76,9 +75,8 @@ namespace ATM.Registration
                         }
                         
                     }
-                   
+                    Validation.ErrorInfo();
                 }
-                Validation.ErrorInfo();
             }
         }
         private static void EntryInfo()

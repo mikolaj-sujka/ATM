@@ -24,9 +24,17 @@ namespace ATM.Registration
             return (pin.Length == 4) && (pin.All(IsDigit));
         }
 
-        public static bool IsMailValid(string mail)
+        public static bool IsMailValid(string email)
         {
-            return new MailAddress(mail).Host.Contains(".");
+            try
+            {
+                var address = new MailAddress(email);
+                return address.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public static bool IsPasswordLoginValid(string str)

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ATM.Data;
 using ATM.Registration;
 using ATM.View;
 
@@ -16,8 +11,9 @@ namespace ATM.Login
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("You chose to sign in!\n");
             int chancesToLogIn = 3;
+            bool logOut = false;
 
-            while (chancesToLogIn >= 0)
+            while (chancesToLogIn >= 0 && !logOut)
             {
                 Console.Write("Enter your login: ");
                 var login = Console.ReadLine();
@@ -27,8 +23,9 @@ namespace ATM.Login
                     string password = Console.ReadLine();
                     if (Validation.IsPasswordValid(password, login))
                     {
-                        CustomerView.CustomerActionChoice(login);
                         Console.WriteLine("You have logged in successfully!");
+                        logOut = true;
+                        CustomerView.CustomerActionChoice(login);
                     }
                     else
                     {
