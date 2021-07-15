@@ -1,5 +1,6 @@
 ﻿using System;
 using ATM.Data;
+using ATM.Registration;
 using static ATM.Login.Login;
 using static ATM.Registration.Registration;
 
@@ -21,7 +22,7 @@ namespace ATM.View
                 {
                     char choice = Convert.ToChar(Console.ReadLine()!);
 
-                    if (IsValidTypeAndRange(choice))
+                    if (Validation.IsValidTypeAndRange(choice, 3))
                     {
                         switch (choice)
                         {
@@ -40,22 +41,6 @@ namespace ATM.View
             }
         }
 
-        private static bool IsValidTypeAndRange(char c)
-        {
-            if (Char.IsDigit(c))
-            {
-                if (c - '0' >= 1 && c - '0' <= 3)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
-
         private static void Exit()
         {
             Console.WriteLine("You chose exit! Thank you for your time!");
@@ -64,9 +49,9 @@ namespace ATM.View
         private static void EntryInfo()
         {
             Console.WriteLine("\n\t\t\t\t\tWelcome in ATM simulator!\n\t " +
-                              "\t\tChoose action:\t 1. Register\n" +
-                              "\t\t\t\t\t 2. Login\n" +
-                              "\t\t\t\t\t 3. Exit");
+                              "\t\tChoose action:\t 1. REGISTER\n" +
+                              "\t\t\t\t\t 2. LOGIN\n" +
+                              "\t\t\t\t\t 3. EXIT");
         }
     }
 }

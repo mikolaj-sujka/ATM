@@ -58,8 +58,9 @@ namespace ATM.Registration
                                             Pin = Int16.Parse(pin),
                                             Password = password
                                         });
-                                        DataUser.SaveUserData(customer.User);
-                                        Console.WriteLine("New account registered!");
+                                        Console.WriteLine(DataUser.SaveUserData(customer.User)
+                                            ? "New account registered!"
+                                            : "Login/mail is already used!");
                                     }
                                     else
                                     {

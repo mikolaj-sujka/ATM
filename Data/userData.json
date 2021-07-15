@@ -6,22 +6,22 @@
     "Mail": "mikolajsujka@gmail.com",
     "Login": "msujka",
     "Pin": 1234,
-    "Password": "liverpool"
+    "Password": "liverpool9"
   },
   {
     "Name": "Adam",
     "LastName": "Chlebek",
-    "Mail": "chlebkowski@o2.pl",
-    "Login": "chlebo",
-    "Pin": 1902,
-    "Password": "dassadas"
+    "Mail": "chlebowski@o2.pl",
+    "Login": "chlebek",
+    "Pin": 1111,
+    "Password": "abcdefgh123"
   },
   {
-    "Name": "Adam",
-    "LastName": "Badam",
-    "Mail": "adam@o2.pl",
-    "Login": "adamooo",
-    "Pin": 1001,
-    "Password": "barcelona"
+    "Name": "Przemyslaw",
+    "LastName": "Sujka",
+    "Mail": "sujkap@o2.pl",
+    "Login": "sujkap",
+    "Pin": 1111,
+    "Password": "barca123"
   }
 ]

@@ -8,7 +8,7 @@ namespace ATM.Data
 {
     class DataUser
     {
-        public static List<User> Users = new List<User>();
+        public static List<User> Users = new();
 
         public static void UpdateUsersOldData()
         {
@@ -25,10 +25,11 @@ namespace ATM.Data
             }
         }
 
-        public static void SaveUserData(User user)
+        public static bool SaveUserData(User user)
         {
-            if(IsUserExist(user)) return;
+            if(IsUserExist(user)) return false;
             Users.Add(user);
+            return true;
         }
 
         public static void CreateJsonFile()
@@ -55,6 +56,20 @@ namespace ATM.Data
                 }
             }
             return false;
+        }
+
+        public static Customer FindCustomer(string login)
+        {
+            if (Users.Count > 0)
+            {
+                foreach (var User in Users)
+                {
+                    if (User.Login.Equals(login))
+                        return new Customer(User);
+                }
+            }
+
+            return null; // not found
         }
     }
 }

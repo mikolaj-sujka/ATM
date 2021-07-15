@@ -9,8 +9,6 @@ namespace ATM.Users
         public String Mail { get; set; }
         public String Login { get; set; }
         public int Pin { get; set; }
-
         public String Password { get; set; }
-
     }
 }

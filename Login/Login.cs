@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ATM.Data;
+using ATM.Registration;
 using ATM.View;
 
 namespace ATM.Login
@@ -17,13 +18,13 @@ namespace ATM.Login
             Console.Write("Enter your login: ");
             String login = Console.ReadLine();
             
-            if (IsLoginExist(login))
+            if (Validation.IsLoginExist(login))
             {
                 Console.Write("Enter your password: ");
                 String password = Console.ReadLine();
-                if (IsPasswordValid(password, login))
+                if (Validation.IsPasswordValid(password, login))
                 {
-                    CustomerView.CustomerActionChoice(login, password);
+                    CustomerView.CustomerActionChoice(login);
                     Console.WriteLine("You have logged in successfully!");
                 }
                 else
@@ -35,32 +36,6 @@ namespace ATM.Login
             {
                 Console.WriteLine("This login is incorrect! Try again later!");
             }
-        }
-
-        private static bool IsLoginExist(string login)
-        {
-            var users = DataUser.ReadUserData();
-            foreach (var user in users)
-            {
-                if (user.Login.Equals(login))
-                    return true;
-            }
-
-            return false;
-        }
-
-        private static bool IsPasswordValid(string password, string login) 
-        {
-            var users = DataUser.ReadUserData();
-            foreach (var user in users)
-            {
-                if (user.Login.Equals(login))
-                {
-                    if (user.Password.Equals(password))
-                        return true;
-                }
-            }
-            return true;
         }
     }
 }
