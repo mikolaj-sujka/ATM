@@ -25,34 +25,79 @@ namespace ATM.Users
 
         public void Withdrawal()
         {
-            Console.Write("Enter amount of money to withdraw: ");
-            String amount = Console.ReadLine();
-            if (!Validation.IsDigits(amount)) return;
-            int withdrawAmount = Parse(amount);
-            if (withdrawAmount <= _balance)
+            if (EnterPin())
             {
-                _balance -= withdrawAmount;
-                Console.WriteLine("You successively withdraw money!");
-                DisplayReceipt(_balance, GetCurrentMethod());
+                Console.Write("Enter amount of money to withdraw: ");
+                String amount = Console.ReadLine();
+                if (!Validation.IsDigits(amount)) return;
+                int withdrawAmount = Parse(amount ?? string.Empty);
+                if (withdrawAmount <= _balance)
+                {
+                    if (withdrawAmount > 0)
+                    {
+                        _balance -= withdrawAmount;
+                        Console.WriteLine("You successively withdraw money!");
+                        DisplayReceipt(_balance, GetCurrentMethod());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enter positive amount!");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Not enough balance on your account!");
+                }
             }
             else
             {
-                Console.WriteLine("Not enough balance on your account!");
+                Console.WriteLine("Entered wrong PIN!");
             }
         }
         public void DisplayBalance()
         {
-            Console.WriteLine("Balance: " + _balance + "$.");
+            if(EnterPin())
+                Console.WriteLine("Balance: " + _balance + "$.");
+            else
+            {
+                Console.WriteLine("Entered wrong PIN!");
+            }
         }
         public void Deposit()
         {
-            Console.Write("Enter amount of money to deposit: ");
-            var amount = Console.ReadLine();
-            if (!Validation.IsDigits(amount)) return;
-            int withdrawAmount = Parse(amount);
-            _balance += withdrawAmount;
+            if (EnterPin())
+            {
+                Console.Write("Enter amount of money to deposit: ");
+                var amount = Console.ReadLine();
+                if (!Validation.IsDigits(amount)) return;
+                int depositAmount = Parse(amount ?? string.Empty);
 
-            DisplayReceipt(_balance, GetCurrentMethod());
+                if (depositAmount > 0)
+                    _balance += depositAmount;
+                else
+                {
+                    Console.WriteLine("Enter positive amount!");
+                }
+                DisplayReceipt(_balance, GetCurrentMethod());
+            }
+            else
+            {
+                Console.WriteLine("Entered wrong PIN!");
+            }
+        }
+
+        public  bool EnterPin()
+        {
+            Console.Write("Enter PIN: ");
+            var pin = Console.ReadLine();
+            if (Validation.IsPinValid(pin))
+            {
+                var Pin = Int16.Parse(pin);
+                if (Pin == _user.Pin)
+                    return true;
+            }
+
+            return false;
         }
 
         public static void DisplayReceipt(int balanceAfter, string nameOfOperation)

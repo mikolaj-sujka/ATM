@@ -15,7 +15,7 @@ namespace ATM.Registration
             Console.WriteLine("You chose to register!\n");
             EntryInfo();
             Console.WriteLine("----------------------------------------------------");
-            bool correctEntered = false;
+            var correctEntered = false;
 
             while (!correctEntered)
             {
@@ -56,7 +56,7 @@ namespace ATM.Registration
                                             Mail = mail,
                                             Name = name,
                                             Pin = Int16.Parse(pin),
-                                            Password = password
+                                            Password = DataUser.EncodePassowrd(password)
                                         });
                                         Console.WriteLine(DataUser.SaveUserData(customer.User)
                                             ? "New account registered!"

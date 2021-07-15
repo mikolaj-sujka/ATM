@@ -9,19 +9,19 @@ using ATM.View;
 
 namespace ATM.Login
 {
-    class Login
+    internal class Login
     {
         public static void LogIn()
         {
             Console.WriteLine("----------------------------------------------------");
             Console.WriteLine("You chose to sign in!\n");
             Console.Write("Enter your login: ");
-            String login = Console.ReadLine();
+            var login = Console.ReadLine();
             
             if (Validation.IsLoginExist(login))
             {
                 Console.Write("Enter your password: ");
-                String password = Console.ReadLine();
+                string password = Console.ReadLine();
                 if (Validation.IsPasswordValid(password, login))
                 {
                     CustomerView.CustomerActionChoice(login);

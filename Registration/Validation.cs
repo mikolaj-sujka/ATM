@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using ATM.Data;
+using static System.Char;
 
 namespace ATM.Registration
 {
@@ -13,22 +14,22 @@ namespace ATM.Registration
             return Regex.IsMatch(str, @"^[a-zA-Z]+$"); 
         }
 
-        public static bool IsDigits(String str)
+        public static bool IsDigits(string str)
         {
-            return str.All(char.IsDigit);
+            return str.All(IsDigit);
         }
 
-        public static bool IsPinValid(String pin)
+        public static bool IsPinValid(string pin)
         {
-            return (pin.Length == 4) && (pin.All(char.IsDigit));
+            return (pin.Length == 4) && (pin.All(IsDigit));
         }
 
-        public static bool IsMailValid(String mail)
+        public static bool IsMailValid(string mail)
         {
             return new MailAddress(mail).Host.Contains(".");
         }
 
-        public static bool IsPasswordLoginValid(String str)
+        public static bool IsPasswordLoginValid(string str)
         {
             return (str.Length is >= 4 and <= 20) && (!(str.Contains(" ")));
         }
@@ -40,16 +41,9 @@ namespace ATM.Registration
 
         public static bool IsValidTypeAndRange(char c, int numOfOperations)
         {
-            if (Char.IsDigit(c))
+            if (IsDigit(c))
             {
-                if (c - '0' >= 1 && c - '0' <= numOfOperations)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return c - '0' >= 1 && c - '0' <= numOfOperations;
             }
             return false;
         }
@@ -71,11 +65,10 @@ namespace ATM.Registration
             var users = DataUser.ReadUserData();
             foreach (var user in users)
             {
-                if (user.Login.Equals(login))
-                {
-                    if (user.Password.Equals(password))
-                        return true;
-                }
+                if (!user.Login.Equals(login)) continue;
+                string encodedPassword = DataUser.DecodePassowrd(user.Password);
+                if (encodedPassword.Equals(password))
+                    return true;
             }
             return false;
         }

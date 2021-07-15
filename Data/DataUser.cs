@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using ATM.Users;
 using Newtonsoft.Json;
 
@@ -13,14 +12,11 @@ namespace ATM.Data
         public static void UpdateUsersOldData()
         {
             var copyOldData = ReadUserData();
-            if (copyOldData != null)
+            if (copyOldData is {Count: > 0})
             {
-                if (copyOldData.Count > 0)
+                foreach (var User in copyOldData)
                 {
-                    foreach (var User in copyOldData)
-                    {
-                        Users.Add(User);
-                    }
+                    Users.Add(User);
                 }
             }
         }
@@ -47,29 +43,41 @@ namespace ATM.Data
 
         public static bool IsUserExist(User user)
         {
-            if (Users.Count > 0)
+            if (Users.Count <= 0) return false;
+            foreach (var User in Users)
             {
-                foreach (var User in Users)
-                {
-                    if (User.Login.Equals(user.Login) || User.Mail.Equals(user.Mail))
-                        return true;
-                }
+                if (User.Login.Equals(user.Login) || User.Mail.Equals(user.Mail))
+                    return true;
             }
             return false;
         }
 
         public static Customer FindCustomer(string login)
         {
-            if (Users.Count > 0)
+            if (Users.Count <= 0) return null; // not found
+            foreach (var User in Users)
             {
-                foreach (var User in Users)
-                {
-                    if (User.Login.Equals(login))
-                        return new Customer(User);
-                }
+                if (User.Login.Equals(login))
+                    return new Customer(User);
             }
 
             return null; // not found
+        }
+
+        public static string DecodePassowrd(string password)
+        {
+            if (password == null) return null;
+            var base64EncodedBytes = System.Convert.FromBase64String(password);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+
+        }
+
+        public static string EncodePassowrd(string password)
+        {
+            if (password == null) return null;
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(password);
+            return System.Convert.ToBase64String(plainTextBytes);
+
         }
     }
 }
