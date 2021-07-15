@@ -9,7 +9,7 @@ namespace ATM.Registration
     {
         public static bool IsNameLastNameValid(string str)
         {
-            return Regex.IsMatch(str, @"^[a-zA-Z]+$"); // contains only letters
+            return Regex.IsMatch(str, @"^[a-zA-Z]+$"); 
         }
 
         public static bool IsPinValid(String pin)

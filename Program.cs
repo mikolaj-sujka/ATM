@@ -1,5 +1,4 @@
-﻿using System;
-using ATM.View;
+﻿using ATM.View;
 
 namespace ATM
 {

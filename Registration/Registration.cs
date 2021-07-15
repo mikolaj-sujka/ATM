@@ -2,6 +2,9 @@
 using ATM.Data;
 using ATM.Users;
 
+// skroc rejestracje
+// dodaj zachowanie ze jak ten sam login + mail to od nowa
+
 namespace ATM.Registration
 {
     class Registration

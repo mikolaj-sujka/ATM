@@ -5,6 +5,8 @@ namespace ATM.Users
     {
         private User _user { get; }
 
+        // dodaj ilosc pieniedzy na koncie ... + funkcjonalnosc + readme
+
         public User User
         {
             get => _user;

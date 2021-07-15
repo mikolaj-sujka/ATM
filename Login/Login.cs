@@ -37,16 +37,30 @@ namespace ATM.Login
             }
         }
 
-        private static bool IsLoginExist(string login) // sprawdz w bazie
+        private static bool IsLoginExist(string login)
         {
-            var user = DataUser.ReadUserData();
-            return login.Equals(user.Login);
+            var users = DataUser.ReadUserData();
+            foreach (var user in users)
+            {
+                if (user.Login.Equals(login))
+                    return true;
+            }
+
+            return false;
         }
 
-        private static bool IsPasswordValid(string password, string login) // sprawdz w bazie
+        private static bool IsPasswordValid(string password, string login) 
         {
-            var user = DataUser.ReadUserData();
-            return (login.Equals(user.Login) && password.Equals(user.Password));
+            var users = DataUser.ReadUserData();
+            foreach (var user in users)
+            {
+                if (user.Login.Equals(login))
+                {
+                    if (user.Password.Equals(password))
+                        return true;
+                }
+            }
+            return true;
         }
     }
 }

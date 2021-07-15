@@ -1,8 +1,27 @@
-{
-  "Name": "Adam",
-  "LastName": "Kowalski",
-  "Mail": "kowalski@o2.pl",
-  "Login": "kowalskiPL",
-  "Pin": 1233,
-  "Password":"warszawawschodnia"
-}
+[
+  
+  {
+    "Name": "Mikolaj",
+    "LastName": "Sujka",
+    "Mail": "mikolajsujka@gmail.com",
+    "Login": "msujka",
+    "Pin": 1234,
+    "Password": "liverpool"
+  },
+  {
+    "Name": "Adam",
+    "LastName": "Chlebek",
+    "Mail": "chlebkowski@o2.pl",
+    "Login": "chlebo",
+    "Pin": 1902,
+    "Password": "dassadas"
+  },
+  {
+    "Name": "Adam",
+    "LastName": "Badam",
+    "Mail": "adam@o2.pl",
+    "Login": "adamooo",
+    "Pin": 1001,
+    "Password": "barcelona"
+  }
+]
